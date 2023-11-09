@@ -10,23 +10,24 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-  @Bean
-  public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-    http.authorizeHttpRequests((authorize) -> authorize
-            .requestMatchers("/api/open/**").permitAll()
-            .requestMatchers("/getCaptcha").permitAll()
-            .requestMatchers("/admin/**").hasRole("ADMIN")
-            .requestMatchers("/user/**").hasRole("USER")
-            .anyRequest().authenticated()
-        )
-        .formLogin()
-        .loginPage("/login")
-        .permitAll()
-        .and()
-        .logout()
-        .permitAll();
-    return http.build();
-  }
+	@Bean
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+		http.csrf().disable().authorizeHttpRequests((authorize) -> authorize
+			.requestMatchers("/api/open/**").permitAll()
+			.requestMatchers("/getCaptcha").permitAll()
+			.requestMatchers("/login").permitAll()
+			.requestMatchers("/admin/**").hasRole("ADMIN")
+			.requestMatchers("/user/**").hasRole("USER")
+			.anyRequest().authenticated()
+		);
+//			.formLogin()
+//			.loginPage("/login")
+//			.permitAll()
+//			.and()
+//			.logout()
+//			.permitAll();
+		return http.build();
+	}
 }
 
 

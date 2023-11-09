@@ -3,7 +3,9 @@ package com.cx.meetyoubackend.constans;
 public enum CaptchaConstants {
 	CAPTCHA_CODE_PREFIX("CAPTCHA_CODE_"),
 	LOGIN_FAIL_PREFIX("LOGIN_FAIL_"),
-	CAPTCHA_EXPIRATION_MINUTES(5);
+	CAPTCHA_EXPIRATION_MINUTES(5),
+
+	LOGIN_SUCCESS_PREFIX("LOGIN_SUCCESS_");
 
 	private final String value;
 	private final int intValue;

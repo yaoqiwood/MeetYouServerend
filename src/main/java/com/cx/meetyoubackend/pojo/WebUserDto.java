@@ -8,5 +8,6 @@ import lombok.EqualsAndHashCode;
 @Data
 public class WebUserDto extends WebUserEntity {
 
-  private String captCha;
+	// 验证码
+	private String captCha;
 }

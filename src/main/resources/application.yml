@@ -18,3 +18,11 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+jwt:
+  secret-key: 'yourSecretKey'
+  expiration-time: 3600000
