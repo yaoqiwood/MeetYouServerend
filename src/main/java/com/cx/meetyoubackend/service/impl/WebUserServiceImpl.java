@@ -58,18 +58,22 @@ public class WebUserServiceImpl extends ServiceImpl<WebUserMapper, WebUserEntity
 		Integer failCount = NullSafe.parseIntX(
 			redisService.get(
 				NullSafe.toStringX(CaptchaConstants.LOGIN_FAIL_PREFIX.getValue() + sessionId)));
-		if (failCount != null && failCount >= 3) {
+		if (failCount == null) {
+			failCount = 0;
+		}
+		if (failCount > 3) {
 			// 需要验证码验证
+			response.put(ResponseBodyEnum.CAPTCHA_REQUIRED.getValue(), true);
 			String actualCaptcha =
-				redisService.get(CaptchaConstants.CAPTCHA_CODE_PREFIX.getValue()) + sessionId;
-			if (actualCaptcha == null || !actualCaptcha.equals(userDto.getCaptCha())) {
+				NullSafe.toStringX(
+					redisService.get(CaptchaConstants.CAPTCHA_CODE_PREFIX.getValue() + sessionId));
+
+			if (!actualCaptcha.equals(userDto.getCaptCha())) {
 				response.put(ResponseBodyEnum.MESSAGE.getValue(), "Captcha is incorrect.");
 				response.put(ResponseBodyEnum.STATUS.getValue(), StatusEnum.WARNING.getValue());
 				response.put(ResponseBodyEnum.SUCCESS.getValue(), false);
-				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Captcha is incorrect.");
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
 			}
-		} else {
-			failCount = 0;
 		}
 
 		//	验证是否存在这个账户
@@ -104,7 +108,8 @@ public class WebUserServiceImpl extends ServiceImpl<WebUserMapper, WebUserEntity
 				CaptchaConstants.LOGIN_FAIL_PREFIX.getValue() + sessionId,
 				failCount + 1, 10,
 				TimeUnit.MINUTES);
-			response.put(ResponseBodyEnum.MESSAGE.getValue(), "Login failed.");
+			response.put(ResponseBodyEnum.MESSAGE.getValue(),
+				"Login failed. Your account or password is incorrect.");
 			response.put(ResponseBodyEnum.SUCCESS.getValue(), false);
 			response.put(ResponseBodyEnum.STATUS.getValue(), StatusEnum.ERROR.getValue());
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
