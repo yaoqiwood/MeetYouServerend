@@ -38,14 +38,15 @@ public class MyInterceptor implements HandlerInterceptor {
 
 		// 在这里添加你的逻辑
 		// 例如，检查请求头中的令牌
-		String token = request.getHeader("X-Token");
+		String authHeader = request.getHeader("Authorization");
+		if (authHeader == null || !authHeader.startsWith("Bearer")) {
+			response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
+			return false;  // 如果验证失败，返回false，请求将被拦截
+		}
+		String token = authHeader.substring(7);
 		String redisToken = redisCrudService.get(CaptchaConstants.LOGIN_SUCCESS_PREFIX.getValue())
 			+ request.getSession().getId();
-		if (redisToken.equals(token)) {
-			return true;  // 如果验证成功，返回true继续执行
-		}
-		response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
-		return false;  // 如果验证失败，返回false，请求将被拦截
+		return redisToken.equals(token);  // 如果验证成功，返回true继续执行
 	}
 }
 
