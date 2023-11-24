@@ -1,6 +1,8 @@
 package com.cx.meetyoubackend.constans;
 
 public enum CaptchaConstants {
+
+	TEMP_TOKEN_KEY("temp_token_key"),
 	CAPTCHA_CODE_PREFIX("CAPTCHA_CODE_"),
 	LOGIN_FAIL_PREFIX("LOGIN_FAIL_"),
 	CAPTCHA_EXPIRATION_MINUTES(5),

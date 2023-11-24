@@ -54,65 +54,81 @@ public class WebUserServiceImpl extends ServiceImpl<WebUserMapper, WebUserEntity
 	public ResponseEntity<?> login(WebUserDto userDto, String sessionId) {
 		// 返回信息
 		Map<String, Object> response = new HashMap<>();
+		System.out.println(CaptchaConstants.LOGIN_FAIL_PREFIX.getValue() + sessionId);
 		// 检查登录失败次数
 		Integer failCount = NullSafe.parseIntX(
 			redisService.get(
 				NullSafe.toStringX(CaptchaConstants.LOGIN_FAIL_PREFIX.getValue() + sessionId)));
-		if (failCount == null) {
-			failCount = 0;
-		}
-		if (failCount > 3) {
-			// 需要验证码验证
-			response.put(ResponseBodyEnum.CAPTCHA_REQUIRED.getValue(), true);
-			String actualCaptcha =
-				NullSafe.toStringX(
-					redisService.get(CaptchaConstants.CAPTCHA_CODE_PREFIX.getValue() + sessionId));
+		boolean isLoginSuccess = false;
+		try {
+			if (failCount == null) {
+				failCount = 0;
+			}
+			if (failCount > 3) {
+				if (null == userDto.getCaptCha() || "".equals(userDto.getCaptCha())) {
+					return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+						.body("CaptCha is required");
+				}
+				// 需要验证码验证
+				response.put(ResponseBodyEnum.CAPTCHA_REQUIRED.getValue(), true);
+				String actualCaptcha =
+					NullSafe.toStringX(
+						redisService.get(
+							CaptchaConstants.CAPTCHA_CODE_PREFIX.getValue() + sessionId));
 
-			if (!actualCaptcha.equals(userDto.getCaptCha())) {
-				response.put(ResponseBodyEnum.MESSAGE.getValue(), "Captcha is incorrect.");
-				response.put(ResponseBodyEnum.STATUS.getValue(), StatusEnum.WARNING.getValue());
+				if (!actualCaptcha.equals(userDto.getCaptCha())) {
+					response.put(ResponseBodyEnum.MESSAGE.getValue(), "Captcha is incorrect.");
+					response.put(ResponseBodyEnum.STATUS.getValue(), StatusEnum.WARNING.getValue());
+					response.put(ResponseBodyEnum.SUCCESS.getValue(), false);
+					return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+				}
+			}
+
+			//	验证是否存在这个账户
+			QueryWrapper<WebUserEntity> userEntityQueryWrapper = new QueryWrapper<>();
+			userEntityQueryWrapper.lambda()
+				.eq(WebUserEntity::getWebUsername, userDto.getWebUsername());
+			WebUserEntity userEntity = this.getOne(userEntityQueryWrapper);
+			if (userEntity == null) {
+				response.put(ResponseBodyEnum.MESSAGE.getValue(), "Non-existent Account");
+				response.put(ResponseBodyEnum.STATUS.getValue(), StatusEnum.ERROR.getValue());
 				response.put(ResponseBodyEnum.SUCCESS.getValue(), false);
-				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+				return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
+			}
+
+			// 验证用户名和密码
+			if (validateCredentials(userDto.getWebPassword(), userEntity)) {
+				isLoginSuccess = true;
+				// 登录成功，重置登录失败次数
+				redisService.delete(CaptchaConstants.LOGIN_FAIL_PREFIX.getValue() + sessionId);
+				// 增加redis存储生成的token
+				String token = this.jwtTokenUtilService.generateToken(userDto.getWebUsername());
+				redisService.setWithExpireTime(
+					CaptchaConstants.LOGIN_SUCCESS_PREFIX.getValue() + sessionId, token,
+					24, TimeUnit.HOURS);
+				// 返回成功响应
+				response.put(ResponseBodyEnum.TOKEN.getValue(), token);
+				response.put(ResponseBodyEnum.STATUS.getValue(), StatusEnum.SUCCESS.getValue());
+				response.put(ResponseBodyEnum.SUCCESS.getValue(), true);
+				response.put(ResponseBodyEnum.MESSAGE.getValue(), "Login successful.");
+				return ResponseEntity.ok(response);
+			} else {
+				response.put(ResponseBodyEnum.MESSAGE.getValue(),
+					"Login failed. Your account or password is incorrect.");
+				response.put(ResponseBodyEnum.SUCCESS.getValue(), false);
+				response.put(ResponseBodyEnum.STATUS.getValue(), StatusEnum.ERROR.getValue());
+				return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
+			}
+		} finally {
+//			System.out.println(CaptchaConstants.LOGIN_FAIL_PREFIX.getValue() + sessionId);
+			// 登录失败，增加失败次数
+			if (!isLoginSuccess) {
+				redisService.setWithExpireTime(
+					CaptchaConstants.LOGIN_FAIL_PREFIX.getValue() + sessionId,
+					failCount + 1, 10,
+					TimeUnit.MINUTES);
 			}
 		}
 
-		//	验证是否存在这个账户
-		QueryWrapper<WebUserEntity> userEntityQueryWrapper = new QueryWrapper<>();
-		userEntityQueryWrapper.lambda().eq(WebUserEntity::getWebUsername, userDto.getWebUsername());
-		WebUserEntity userEntity = this.getOne(userEntityQueryWrapper);
-		if (userEntity == null) {
-			response.put(ResponseBodyEnum.MESSAGE.getValue(), "Non-existent Account");
-			response.put(ResponseBodyEnum.STATUS.getValue(), StatusEnum.ERROR.getValue());
-			response.put(ResponseBodyEnum.SUCCESS.getValue(), false);
-			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
-		}
-
-		// 验证用户名和密码
-		if (validateCredentials(userDto.getWebPassword(), userEntity)) {
-			// 登录成功，重置登录失败次数
-			redisService.delete(CaptchaConstants.LOGIN_FAIL_PREFIX.getValue() + sessionId);
-			// 增加redis存储生成的token
-			String token = this.jwtTokenUtilService.generateToken(userDto.getWebUsername());
-			redisService.setWithExpireTime(
-				CaptchaConstants.LOGIN_SUCCESS_PREFIX.getValue() + sessionId, token,
-				24, TimeUnit.HOURS);
-			// 返回成功响应
-			response.put(ResponseBodyEnum.TOKEN.getValue(), token);
-			response.put(ResponseBodyEnum.STATUS.getValue(), StatusEnum.SUCCESS.getValue());
-			response.put(ResponseBodyEnum.SUCCESS.getValue(), true);
-			response.put(ResponseBodyEnum.MESSAGE.getValue(), "Login successful.");
-			return ResponseEntity.ok(response);
-		} else {
-			// 登录失败，增加失败次数
-			redisService.setWithExpireTime(
-				CaptchaConstants.LOGIN_FAIL_PREFIX.getValue() + sessionId,
-				failCount + 1, 10,
-				TimeUnit.MINUTES);
-			response.put(ResponseBodyEnum.MESSAGE.getValue(),
-				"Login failed. Your account or password is incorrect.");
-			response.put(ResponseBodyEnum.SUCCESS.getValue(), false);
-			response.put(ResponseBodyEnum.STATUS.getValue(), StatusEnum.ERROR.getValue());
-			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
-		}
 	}
 }

@@ -1,5 +1,6 @@
 package com.cx.meetyoubackend.controller;
 
+import com.cx.meetyoubackend.constans.CaptchaConstants;
 import com.cx.meetyoubackend.pojo.WebUserDto;
 import com.cx.meetyoubackend.service.IWebUserService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -26,7 +27,9 @@ public class WebUserController {
 
 	@PostMapping(value = "/login")
 	public ResponseEntity<?> login(WebUserDto userDto, HttpServletRequest request) {
-		return this.userService.login(userDto, request.getSession().getId());
+		// 请求头获取requestHeader temp_token_key
+		String tempTokenKey = request.getHeader(CaptchaConstants.TEMP_TOKEN_KEY.getValue());
+		return this.userService.login(userDto, tempTokenKey);
 	}
 
 

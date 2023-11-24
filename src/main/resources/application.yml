@@ -27,8 +27,8 @@ jwt:
   secret-key: 'yourSecretKey'
   expiration-time: 3600000
 cors:
-  allowed-origin: "http://localhost:8081"
+  allowed-origin: "http://localhost:8082"
   allowed-methods: "POST, GET, OPTIONS, DELETE"
   max-age: 3600
-  allowed-headers: "Content-Type, Accept"
+  allowed-headers: "Content-Type, Accept , temp_token_key"
 

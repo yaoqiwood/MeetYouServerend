@@ -24,18 +24,18 @@ public class CaptchaController {
 	@GetMapping(value = "/getCaptcha", produces = MediaType.IMAGE_JPEG_VALUE)
 	public void captcha(HttpServletRequest request, HttpServletResponse response)
 		throws IOException {
+		// 获取用户的tempTokenKey
+		String tempTokenKey = request.getHeader(CaptchaConstants.TEMP_TOKEN_KEY.getValue());
 		// 生成验证码字符串
 		String captchaCode = CaptchaUtil.generateCaptchaCode();
 		// 5分钟
 		redisCrudService.setWithExpireTime(
-			CaptchaConstants.CAPTCHA_CODE_PREFIX.getValue() + request.getSession().getId(),
+			CaptchaConstants.CAPTCHA_CODE_PREFIX.getValue() + tempTokenKey,
 			captchaCode, 5, TimeUnit.MINUTES);
-//    System.out.println(captchaCode);
 		System.out.println(
-			CaptchaConstants.CAPTCHA_CODE_PREFIX.getValue() + request.getSession().getId());
+			CaptchaConstants.CAPTCHA_CODE_PREFIX.getValue() + tempTokenKey);
 		LogUtil.info(String.valueOf(redisCrudService.get(
-			(CaptchaConstants.CAPTCHA_CODE_PREFIX.getValue()) + request.getSession()
-				.getId())));
+			(CaptchaConstants.CAPTCHA_CODE_PREFIX.getValue()) + tempTokenKey)));
 		// 生成验证码图像
 		BufferedImage image = CaptchaUtil.generateCaptchaImage(captchaCode);
 

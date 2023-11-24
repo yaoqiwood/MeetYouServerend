@@ -5,6 +5,7 @@ import lombok.Getter;
 @Getter
 public enum ResponseBodyEnum {
 	TOKEN("token"),
+	TEMP_TOKEN("tempToken"),
 	MESSAGE("message"),
 	STATUS("status"),
 	SUCCESS("success"),
