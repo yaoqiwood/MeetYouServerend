@@ -66,8 +66,12 @@ public class WebUserServiceImpl extends ServiceImpl<WebUserMapper, WebUserEntity
 			}
 			if (failCount > 3) {
 				if (null == userDto.getCaptCha() || "".equals(userDto.getCaptCha())) {
+					response.put(ResponseBodyEnum.MESSAGE.getValue(), "Captcha is required.");
+					response.put(ResponseBodyEnum.STATUS.getValue(), StatusEnum.WARNING.getValue());
+					response.put(ResponseBodyEnum.SUCCESS.getValue(), false);
+					response.put(ResponseBodyEnum.CAPTCHA_REQUIRED.getValue(), true);
 					return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-						.body("CaptCha is required");
+						.body(response);
 				}
 				// 需要验证码验证
 				response.put(ResponseBodyEnum.CAPTCHA_REQUIRED.getValue(), true);
@@ -76,7 +80,7 @@ public class WebUserServiceImpl extends ServiceImpl<WebUserMapper, WebUserEntity
 						redisService.get(
 							CaptchaConstants.CAPTCHA_CODE_PREFIX.getValue() + sessionId));
 
-				if (!actualCaptcha.equals(userDto.getCaptCha())) {
+				if (!actualCaptcha.equalsIgnoreCase(userDto.getCaptCha())) {
 					response.put(ResponseBodyEnum.MESSAGE.getValue(), "Captcha is incorrect.");
 					response.put(ResponseBodyEnum.STATUS.getValue(), StatusEnum.WARNING.getValue());
 					response.put(ResponseBodyEnum.SUCCESS.getValue(), false);
