@@ -1,0 +1,349 @@
+2023-12-13 13:57:16.884 - INFO ---[           main] c.m.system.MeetYouBackendApplication     : Starting MeetYouBackendApplication using Java 17.0.9 with PID 41139 (/Users/jianshujie/IdeaProjects/MeetYouBackend/target/classes started by jianshujie in /Users/jianshujie/IdeaProjects/MeetYouBackend)
+
+2023-12-13 13:57:16.886 - INFO ---[           main] c.m.system.MeetYouBackendApplication     : The following 1 profile is active: "dev"
+
+2023-12-13 13:57:17.948 - INFO ---[           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+
+2023-12-13 13:57:17.949 - INFO ---[           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+
+2023-12-13 13:57:17.973 - INFO ---[           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14 ms. Found 0 Redis repository interfaces.
+
+2023-12-13 13:57:18.815 - INFO ---[           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8989 (http)
+
+2023-12-13 13:57:18.821 - INFO ---[           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+
+2023-12-13 13:57:18.821 - INFO ---[           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+
+2023-12-13 13:57:18.865 - INFO ---[           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+
+2023-12-13 13:57:18.865 - INFO ---[           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1819 ms
+
+2023-12-13 13:57:19.309 - INFO ---[           main] org.redisson.Version                     : Redisson 3.25.0
+
+2023-12-13 13:57:19.344 - WARN ---[           main] i.n.r.d.DnsServerAddressStreamProviders  : Can not find io.netty.resolver.dns.macos.MacOSDnsServerAddressStreamProvider in the classpath, fallback to system defaults. This may result in incorrect DNS resolutions on MacOS. Check whether you have a dependency on 'io.netty:netty-resolver-dns-native-macos'
+
+2023-12-13 13:57:19.483 - INFO ---[isson-netty-2-5] o.r.c.pool.MasterPubSubConnectionPool    : 1 connections initialized for 127.0.0.1/127.0.0.1:6379
+
+2023-12-13 13:57:19.556 - INFO ---[sson-netty-2-19] o.r.c.pool.MasterConnectionPool          : 24 connections initialized for 127.0.0.1/127.0.0.1:6379
+
+2023-12-13 13:57:20.080 - WARN ---[           main] c.b.m.core.injector.DefaultSqlInjector   : class com.meetyou.system.model.entity.SysRoleMenu ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+
+2023-12-13 13:57:20.106 - WARN ---[           main] c.b.m.core.injector.DefaultSqlInjector   : class com.meetyou.system.model.entity.SysUserRole ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+
+2023-12-13 13:57:20.223 - WARN ---[           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'ss': Invocation of init method failed
+
+2023-12-13 13:57:20.223 - INFO ---[           main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-0} closing ...
+
+2023-12-13 13:57:20.242 - INFO ---[           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+
+2023-12-13 13:57:20.279 - INFO ---[           main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+
+2023-12-13 13:57:20.291 -ERROR ---[           main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'ss': Invocation of init method failed
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:222)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:421)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1767)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:601)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:973)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:946)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:616)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:753)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:455)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:323)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1342)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1331)
+	at com.meetyou.system.MeetYouBackendApplication.main(MeetYouBackendApplication.java:10)
+Caused by: org.mybatis.spring.MyBatisSystemException: null
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:97)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:439)
+	at jdk.proxy2/jdk.proxy2.$Proxy125.selectList(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:224)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.executeForMany(MybatisMapperMethod.java:166)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.execute(MybatisMapperMethod.java:77)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$PlainMethodInvoker.invoke(MybatisMapperProxy.java:152)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89)
+	at jdk.proxy2/jdk.proxy2.$Proxy126.getRolePermsList(Unknown Source)
+	at com.meetyou.system.service.impl.SysRoleMenuServiceImpl.getRolePermsList(SysRoleMenuServiceImpl.java:42)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:352)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:713)
+	at com.meetyou.system.service.impl.SysRoleMenuServiceImpl$$SpringCGLIB$$0.getRolePermsList(<generated>)
+	at com.meetyou.system.base.security.service.PermissionService.refreshPermissionCache(PermissionService.java:95)
+	at com.meetyou.system.base.security.service.PermissionService.initPermissionCache(PermissionService.java:85)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMethod.invoke(InitDestroyAnnotationBeanPostProcessor.java:457)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:401)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:219)
+	... 18 common frames omitted
+Caused by: org.apache.ibatis.builder.BuilderException: Error evaluating expression '@com.youlai.system.common.enums.MenuTypeEnum@BUTTON.getValue()'. Cause: org.apache.ibatis.ognl.OgnlException: Could not get static field BUTTON from class com.youlai.system.common.enums.MenuTypeEnum [java.lang.ClassNotFoundException: Cannot find class: com.youlai.system.common.enums.MenuTypeEnum]
+	at org.apache.ibatis.scripting.xmltags.OgnlCache.getValue(OgnlCache.java:48)
+	at org.apache.ibatis.scripting.xmltags.TextSqlNode$BindingTokenParser.handleToken(TextSqlNode.java:77)
+	at org.apache.ibatis.parsing.GenericTokenParser.parse(GenericTokenParser.java:76)
+	at org.apache.ibatis.scripting.xmltags.TextSqlNode.apply(TextSqlNode.java:51)
+	at org.apache.ibatis.scripting.xmltags.MixedSqlNode.lambda$apply$0(MixedSqlNode.java:32)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.apache.ibatis.scripting.xmltags.MixedSqlNode.apply(MixedSqlNode.java:32)
+	at org.apache.ibatis.scripting.xmltags.DynamicSqlSource.getBoundSql(DynamicSqlSource.java:39)
+	at org.apache.ibatis.mapping.MappedStatement.getBoundSql(MappedStatement.java:320)
+	at com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor.intercept(MybatisPlusInterceptor.java:69)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:59)
+	at jdk.proxy2/jdk.proxy2.$Proxy127.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:154)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:142)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:425)
+	... 42 common frames omitted
+Caused by: org.apache.ibatis.ognl.OgnlException: Could not get static field BUTTON from class com.youlai.system.common.enums.MenuTypeEnum
+Caused by: java.lang.ClassNotFoundException: Cannot find class: com.youlai.system.common.enums.MenuTypeEnum
+	at org.apache.ibatis.io.ClassLoaderWrapper.classForName(ClassLoaderWrapper.java:226)
+	at org.apache.ibatis.io.ClassLoaderWrapper.classForName(ClassLoaderWrapper.java:103)
+	at org.apache.ibatis.io.Resources.classForName(Resources.java:322)
+	at org.apache.ibatis.scripting.xmltags.OgnlClassResolver.toClassForName(OgnlClassResolver.java:34)
+	at org.apache.ibatis.ognl.DefaultClassResolver.classForName(DefaultClassResolver.java:59)
+	at org.apache.ibatis.ognl.OgnlRuntime.classForName(OgnlRuntime.java:1584)
+	at org.apache.ibatis.ognl.ASTStaticField.isNodeConstant(ASTStaticField.java:78)
+	at org.apache.ibatis.ognl.SimpleNode.isConstant(SimpleNode.java:343)
+	at org.apache.ibatis.ognl.SimpleNode.evaluateGetValueBody(SimpleNode.java:202)
+	at org.apache.ibatis.ognl.SimpleNode.getValue(SimpleNode.java:258)
+	at org.apache.ibatis.ognl.ASTChain.getValueBody(ASTChain.java:141)
+	at org.apache.ibatis.ognl.SimpleNode.evaluateGetValueBody(SimpleNode.java:212)
+	at org.apache.ibatis.ognl.SimpleNode.getValue(SimpleNode.java:258)
+	at org.apache.ibatis.ognl.Ognl.getValue(Ognl.java:586)
+	at org.apache.ibatis.ognl.Ognl.getValue(Ognl.java:550)
+	at org.apache.ibatis.scripting.xmltags.OgnlCache.getValue(OgnlCache.java:46)
+	at org.apache.ibatis.scripting.xmltags.TextSqlNode$BindingTokenParser.handleToken(TextSqlNode.java:77)
+	at org.apache.ibatis.parsing.GenericTokenParser.parse(GenericTokenParser.java:76)
+	at org.apache.ibatis.scripting.xmltags.TextSqlNode.apply(TextSqlNode.java:51)
+	at org.apache.ibatis.scripting.xmltags.MixedSqlNode.lambda$apply$0(MixedSqlNode.java:32)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.apache.ibatis.scripting.xmltags.MixedSqlNode.apply(MixedSqlNode.java:32)
+	at org.apache.ibatis.scripting.xmltags.DynamicSqlSource.getBoundSql(DynamicSqlSource.java:39)
+	at org.apache.ibatis.mapping.MappedStatement.getBoundSql(MappedStatement.java:320)
+	at com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor.intercept(MybatisPlusInterceptor.java:69)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:59)
+	at jdk.proxy2/jdk.proxy2.$Proxy127.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:154)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:142)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:425)
+	at jdk.proxy2/jdk.proxy2.$Proxy125.selectList(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:224)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.executeForMany(MybatisMapperMethod.java:166)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.execute(MybatisMapperMethod.java:77)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$PlainMethodInvoker.invoke(MybatisMapperProxy.java:152)
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89)
+	at jdk.proxy2/jdk.proxy2.$Proxy126.getRolePermsList(Unknown Source)
+	at com.meetyou.system.service.impl.SysRoleMenuServiceImpl.getRolePermsList(SysRoleMenuServiceImpl.java:42)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:352)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:713)
+	at com.meetyou.system.service.impl.SysRoleMenuServiceImpl$$SpringCGLIB$$0.getRolePermsList(<generated>)
+	at com.meetyou.system.base.security.service.PermissionService.refreshPermissionCache(PermissionService.java:95)
+	at com.meetyou.system.base.security.service.PermissionService.initPermissionCache(PermissionService.java:85)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMethod.invoke(InitDestroyAnnotationBeanPostProcessor.java:457)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:401)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:219)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:421)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1767)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:601)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:973)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:946)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:616)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:753)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:455)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:323)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1342)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1331)
+	at com.meetyou.system.MeetYouBackendApplication.main(MeetYouBackendApplication.java:10)
+2023-12-13 13:59:34.749 - INFO ---[           main] c.m.system.MeetYouBackendApplication     : Starting MeetYouBackendApplication using Java 17.0.9 with PID 41491 (/Users/jianshujie/IdeaProjects/MeetYouBackend/target/classes started by jianshujie in /Users/jianshujie/IdeaProjects/MeetYouBackend)
+
+2023-12-13 13:59:34.750 - INFO ---[           main] c.m.system.MeetYouBackendApplication     : The following 1 profile is active: "dev"
+
+2023-12-13 13:59:36.409 - INFO ---[           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+
+2023-12-13 13:59:36.411 - INFO ---[           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+
+2023-12-13 13:59:36.436 - INFO ---[           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 0 Redis repository interfaces.
+
+2023-12-13 13:59:37.284 - INFO ---[           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8989 (http)
+
+2023-12-13 13:59:37.290 - INFO ---[           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+
+2023-12-13 13:59:37.291 - INFO ---[           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+
+2023-12-13 13:59:37.335 - INFO ---[           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+
+2023-12-13 13:59:37.335 - INFO ---[           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2427 ms
+
+2023-12-13 13:59:37.786 - INFO ---[           main] org.redisson.Version                     : Redisson 3.25.0
+
+2023-12-13 13:59:37.823 - WARN ---[           main] i.n.r.d.DnsServerAddressStreamProviders  : Can not find io.netty.resolver.dns.macos.MacOSDnsServerAddressStreamProvider in the classpath, fallback to system defaults. This may result in incorrect DNS resolutions on MacOS. Check whether you have a dependency on 'io.netty:netty-resolver-dns-native-macos'
+
+2023-12-13 13:59:37.970 - INFO ---[isson-netty-2-4] o.r.c.pool.MasterPubSubConnectionPool    : 1 connections initialized for 127.0.0.1/127.0.0.1:6379
+
+2023-12-13 13:59:38.052 - INFO ---[sson-netty-2-19] o.r.c.pool.MasterConnectionPool          : 24 connections initialized for 127.0.0.1/127.0.0.1:6379
+
+2023-12-13 13:59:38.579 - WARN ---[           main] c.b.m.core.injector.DefaultSqlInjector   : class com.meetyou.system.model.entity.SysRoleMenu ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+
+2023-12-13 13:59:38.605 - WARN ---[           main] c.b.m.core.injector.DefaultSqlInjector   : class com.meetyou.system.model.entity.SysUserRole ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+
+2023-12-13 13:59:38.802 - INFO ---[           main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+
+2023-12-13 13:59:40.772 - INFO ---[           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+
+2023-12-13 13:59:40.867 - INFO ---[           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1f9009d3, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4c9ed40, org.springframework.security.web.context.SecurityContextHolderFilter@1227862a, org.springframework.security.web.header.HeaderWriterFilter@1440a166, org.springframework.web.filter.CorsFilter@56394880, org.springframework.security.web.authentication.logout.LogoutFilter@362ad436, com.meetyou.system.filter.VerifyCodeFilter@23c3f787, com.meetyou.system.base.security.jwt.JwtTokenFilter@3c82bcbd, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@35d8a046, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@165a78d4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@776ae580, org.springframework.security.web.session.SessionManagementFilter@76093fa9, org.springframework.security.web.access.ExceptionTranslationFilter@f507d33, org.springframework.security.web.access.intercept.AuthorizationFilter@51a3e3b4]
+
+2023-12-13 13:59:40.880 - WARN ---[           main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/api/v1/auth/captcha']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+
+2023-12-13 13:59:40.880 - INFO ---[           main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/api/v1/auth/captcha']
+
+2023-12-13 13:59:40.881 - WARN ---[           main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/webjars/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+
+2023-12-13 13:59:40.881 - INFO ---[           main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/webjars/**']
+
+2023-12-13 13:59:40.881 - WARN ---[           main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/doc.html']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+
+2023-12-13 13:59:40.881 - INFO ---[           main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/doc.html']
+
+2023-12-13 13:59:40.881 - WARN ---[           main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/swagger-resources/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+
+2023-12-13 13:59:40.881 - INFO ---[           main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/swagger-resources/**']
+
+2023-12-13 13:59:40.881 - WARN ---[           main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/v3/api-docs/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+
+2023-12-13 13:59:40.881 - INFO ---[           main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/v3/api-docs/**']
+
+2023-12-13 13:59:40.881 - WARN ---[           main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/swagger-ui/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+
+2023-12-13 13:59:40.881 - INFO ---[           main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/swagger-ui/**']
+
+2023-12-13 13:59:40.881 - WARN ---[           main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/swagger-ui.html']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+
+2023-12-13 13:59:40.881 - INFO ---[           main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/swagger-ui.html']
+
+2023-12-13 13:59:40.881 - WARN ---[           main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/ws/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+
+2023-12-13 13:59:40.881 - INFO ---[           main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/ws/**']
+
+2023-12-13 13:59:40.881 - WARN ---[           main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Mvc [pattern='/ws-app/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+
+2023-12-13 13:59:40.881 - INFO ---[           main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Mvc [pattern='/ws-app/**']
+
+2023-12-13 13:59:41.757 - INFO ---[           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8989 (http) with context path ''
+
+2023-12-13 13:59:41.759 - INFO ---[           main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+
+2023-12-13 13:59:41.759 - INFO ---[           main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@1342c6e1]]
+
+2023-12-13 13:59:41.759 - INFO ---[           main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+
+2023-12-13 13:59:41.775 - INFO ---[           main] c.m.system.MeetYouBackendApplication     : Started MeetYouBackendApplication in 7.393 seconds (process running for 8.208)
+
+2023-12-13 13:59:41.998 - INFO ---[on(4)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+
+2023-12-13 13:59:41.998 - INFO ---[on(4)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+
+2023-12-13 13:59:42.000 - INFO ---[on(4)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+
+2023-12-13 14:00:14.123 - WARN ---[nio-8989-exec-1] o.s.w.s.h.HandlerMappingIntrospector     : Cache miss for REQUEST dispatch to '/doc.html' (previous null). Performing MatchableHandlerMapping lookup. This is logged once only at WARN level, and every time at TRACE.
+
+2023-12-13 14:00:14.136 - INFO ---[nio-8989-exec-1] c.m.system.filter.RequestLogFilter       : request uri: /doc.html
+
+2023-12-13 14:00:14.231 - INFO ---[nio-8989-exec-2] c.m.system.filter.RequestLogFilter       : request uri: /webjars/css/app.ac23e017.css
+
+2023-12-13 14:00:14.232 - INFO ---[nio-8989-exec-3] c.m.system.filter.RequestLogFilter       : request uri: /webjars/css/chunk-vendors.f24a310a.css
+
+2023-12-13 14:00:14.233 - INFO ---[nio-8989-exec-4] c.m.system.filter.RequestLogFilter       : request uri: /webjars/js/chunk-vendors.d51cf6f8.js
+
+2023-12-13 14:00:14.233 - INFO ---[nio-8989-exec-5] c.m.system.filter.RequestLogFilter       : request uri: /webjars/js/app.51033393.js
+
+2023-12-13 14:00:14.370 - INFO ---[nio-8989-exec-6] c.m.system.filter.RequestLogFilter       : request uri: /webjars/css/chunk-75464e7e.8fb93ba5.css
+
+2023-12-13 14:00:14.390 - INFO ---[nio-8989-exec-7] c.m.system.filter.RequestLogFilter       : request uri: /webjars/css/chunk-d7d5f59c.a9ffbfcb.css
+
+2023-12-13 14:00:14.393 - INFO ---[nio-8989-exec-9] c.m.system.filter.RequestLogFilter       : request uri: /webjars/js/chunk-0d102d5a.b2bddffc.js
+
+2023-12-13 14:00:14.394 - INFO ---[nio-8989-exec-8] c.m.system.filter.RequestLogFilter       : request uri: /webjars/js/chunk-069eb437.327773c4.js
+
+2023-12-13 14:00:14.402 - INFO ---[io-8989-exec-10] c.m.system.filter.RequestLogFilter       : request uri: /webjars/js/chunk-0fd67716.d57e2c41.js
+
+2023-12-13 14:00:14.405 - INFO ---[nio-8989-exec-1] c.m.system.filter.RequestLogFilter       : request uri: /webjars/js/chunk-260d712a.390177fe.js
+
+2023-12-13 14:00:14.416 - INFO ---[nio-8989-exec-3] c.m.system.filter.RequestLogFilter       : request uri: /webjars/js/chunk-2d0af44e.392afcd6.js
+
+2023-12-13 14:00:14.424 - INFO ---[nio-8989-exec-2] c.m.system.filter.RequestLogFilter       : request uri: /webjars/js/chunk-2d0bd799.eb48b7f1.js
+
+2023-12-13 14:00:14.440 - INFO ---[nio-8989-exec-4] c.m.system.filter.RequestLogFilter       : request uri: /webjars/js/chunk-3b888a65.8737ce4f.js
+
+2023-12-13 14:00:14.440 - INFO ---[nio-8989-exec-5] c.m.system.filter.RequestLogFilter       : request uri: /webjars/js/chunk-2d0da532.591ad7fc.js
+
+2023-12-13 14:00:14.442 - INFO ---[nio-8989-exec-6] c.m.system.filter.RequestLogFilter       : request uri: /webjars/js/chunk-3ec4aaa8.a79d19f8.js
+
+2023-12-13 14:00:14.443 - INFO ---[nio-8989-exec-7] c.m.system.filter.RequestLogFilter       : request uri: /webjars/js/chunk-589faee0.5bfd1708.js
+
+2023-12-13 14:00:14.450 - INFO ---[nio-8989-exec-1] c.m.system.filter.RequestLogFilter       : request uri: /webjars/js/chunk-735c675c.5b409314.js
+
+2023-12-13 14:00:14.459 - INFO ---[io-8989-exec-10] c.m.system.filter.RequestLogFilter       : request uri: /webjars/js/chunk-adb9e944.2c7f24fe.js
+
+2023-12-13 14:00:14.459 - INFO ---[nio-8989-exec-8] c.m.system.filter.RequestLogFilter       : request uri: /webjars/js/chunk-75464e7e.b130271b.js
+
+2023-12-13 14:00:14.463 - INFO ---[nio-8989-exec-3] c.m.system.filter.RequestLogFilter       : request uri: /webjars/js/chunk-d7d5f59c.e61130f3.js
+
+2023-12-13 14:00:14.954 - WARN ---[nio-8989-exec-2] o.s.w.s.h.HandlerMappingIntrospector     : Cache miss for REQUEST dispatch to '/favicon.ico' (previous null). Performing CorsConfiguration lookup. This is logged once only at WARN level, and every time at TRACE.
+
+2023-12-13 14:00:14.963 - INFO ---[nio-8989-exec-5] c.m.system.filter.RequestLogFilter       : request uri: /v3/api-docs/swagger-config
+
+2023-12-13 14:00:15.001 - INFO ---[nio-8989-exec-4] c.m.system.filter.RequestLogFilter       : request uri: /v3/api-docs/default
+
+2023-12-13 14:00:15.525 - INFO ---[nio-8989-exec-4] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 514 ms
+
+2023-12-13 14:00:41.746 - INFO ---[MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+
+2023-12-13 14:01:02.098 - INFO ---[nio-8989-exec-1] c.m.system.filter.RequestLogFilter       : request uri: /api/v1/auth/captcha
+
+2023-12-13 20:40:03.755 - INFO ---[ionShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+
+2023-12-13 20:40:03.755 - INFO ---[ionShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@1342c6e1]]
+
+2023-12-13 20:40:03.756 - INFO ---[ionShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+
+2023-12-13 20:40:14.794 - INFO ---[ionShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+
+2023-12-13 20:40:14.795 - INFO ---[ionShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+
